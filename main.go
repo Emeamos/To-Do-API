@@ -1,5 +1,10 @@
 package main
 
+import{
+	"net/http"
+	"github.com/gin-gonic/gin"
+}
+
 type todo struct{
 	ID					string	`json:"id"`
 	Item				string	`json:"title"`
@@ -11,4 +16,9 @@ var todos = []todo{
 	{ID:"2", Item:"play game", Completed: false},
 	{ID:"3", Item:"record movie", Completed: false},
 
+}
+
+func main(){
+	router := gin.Default()
+	router.Run("localhost:2020")
 }
