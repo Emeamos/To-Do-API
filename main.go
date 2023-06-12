@@ -1,9 +1,9 @@
 package main
 
-import{
-	"net/http"
+import(
 	"github.com/gin-gonic/gin"
-}
+	"net/http"
+)
 
 type todo struct{
 	ID					string	`json:"id"`
@@ -18,7 +18,12 @@ var todos = []todo{
 
 }
 
+func getTodos(context *gin.Context){
+	context.IndentedJSON(http.StatusOK, todos)
+}
+
 func main(){
 	router := gin.Default()
+	router.GET("/todos", getTodos)
 	router.Run("localhost:2020")
 }
